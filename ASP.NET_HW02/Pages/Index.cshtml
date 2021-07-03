@@ -1,0 +1,45 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<h1>Phones List</h1>
+<ul class="list">
+    <li>
+        <form method="POST">
+            <label>Price</label>
+            <input type="number" name="price" value="10000" />
+            <input type="submit" asp-page-handler="GreaterThan" value="Bigger" />
+            <input type="submit" asp-page-handler="LessThan" value="Less" />
+        </form>
+    </li>
+    <li>
+        <form method="POST">
+            <input type="text" name="str" value="" />
+            <input type="submit" asp-page-handler="Search" value="Search" />
+        </form>
+    </li>
+</ul>
+
+<div class="table">
+    <h3>Phone Name</h3>
+    @foreach (var phone in Model.DisplayedItems)
+    {
+        <p>@phone.Name</p>
+    }
+</div>
+<div class="table">
+    <h3>Phone Price</h3>
+    @foreach (var phone in Model.DisplayedItems)
+    {
+        <p>@phone.Price </p>
+    }
+</div>
+<div class="table">
+    <h3>Phone Manufacturer</h3>
+    @foreach (var phone in Model.DisplayedItems)
+    {
+        <p>@phone.Manufacturer </p>
+    }
+</div>
+
